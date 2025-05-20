@@ -30,7 +30,7 @@ public class SanPhamDao extends SnethliosDAO<SanPham, String> {
     @Override
     public void insert(SanPham entity) {
         try {
-            JdbcHelper.update(insert, entity.getMaSp(), entity.getTenSp(), entity.getLoai(), entity.getDonGia(), entity.getSoLuong(), entity.getMau(), entity.getKichThuoc(), entity.getHang(), entity.getNgayNhap(), entity.getMaHinh(), entity.getMaNV(),entity.getMaKM());
+            JdbcHelper.update(insert, entity.getMaSp(), entity.getTenSp(), entity.getLoai(), entity.getDonGia(), entity.getSoLuong(), entity.getMau(), entity.getKichThuoc(), entity.getHang(), entity.getNgayNhap(), entity.getMaHinh(), entity.getMaNV(), entity.getMaKM());
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -39,7 +39,7 @@ public class SanPhamDao extends SnethliosDAO<SanPham, String> {
     @Override
     public void update(SanPham entity) {
         try {
-            JdbcHelper.update(update, entity.getTenSp(), entity.getLoai(), entity.getDonGia(), entity.getSoLuong(), entity.getMau(), entity.getKichThuoc(), entity.getHang(), entity.getNgayNhap(), entity.getMaHinh(), entity.getMaNV(),entity.getMaKM(),  entity.getMaSp());
+            JdbcHelper.update(update, entity.getTenSp(), entity.getLoai(), entity.getDonGia(), entity.getSoLuong(), entity.getMau(), entity.getKichThuoc(), entity.getHang(), entity.getNgayNhap(), entity.getMaHinh(), entity.getMaNV(), entity.getMaKM(), entity.getMaSp());
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -85,8 +85,8 @@ public class SanPhamDao extends SnethliosDAO<SanPham, String> {
             throw new RuntimeException(ex);
         }
     }
-    
-     public List<String> selectAllHinh() {
+
+    public List<String> selectAllHinh() {
         String select_sql_loai = "Select MAHINH from sanpham group by MAHINH";
         List<String> list = new ArrayList<>();
         try {
@@ -99,7 +99,8 @@ public class SanPhamDao extends SnethliosDAO<SanPham, String> {
             throw new RuntimeException(ex);
         }
     }
- public List<String> selectAllMAKM() {
+
+    public List<String> selectAllMAKM() {
         String select_sql_loai = "Select MAKM from sanpham group by MAKM";
         List<String> list = new ArrayList<>();
         try {
@@ -112,6 +113,7 @@ public class SanPhamDao extends SnethliosDAO<SanPham, String> {
             throw new RuntimeException(ex);
         }
     }
+
     public List<SanPham> selectByCBO(String hang) {
         String sql = "SELECT * FROM sanpham WHERE hang = ?";
         return selectBySQL(sql, hang);
