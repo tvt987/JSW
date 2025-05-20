@@ -116,7 +116,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         lblTitle2.setForeground(new java.awt.Color(153, 0, 0));
         lblTitle2.setText("LOGIN");
 
-        txtMatKhau.setText("songlong");
+        txtMatKhau.setText("123");
 
         btnQR.setText("QR");
         btnQR.addActionListener(new java.awt.event.ActionListener() {

@@ -215,22 +215,22 @@ public class ThemAnhJDialog extends javax.swing.JDialog {
 
     private void lblHinhAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhAMouseClicked
         // TODO add your handling code here:
-        chonAnhA();
+//        chonAnhA();
     }//GEN-LAST:event_lblHinhAMouseClicked
 
     private void lblHinhBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhBMouseClicked
         // TODO add your handling code here:
-        chonAnhB();
+//        chonAnhB();
     }//GEN-LAST:event_lblHinhBMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        Them();
+//        Them();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         // TODO add your handling code here:
-        CapNhat();
+//        CapNhat();
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void tblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHinhMouseClicked
