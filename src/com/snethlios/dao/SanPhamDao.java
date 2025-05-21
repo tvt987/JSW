@@ -7,7 +7,6 @@ package com.snethlios.dao;
 
 import com.snethlios.entity.SanPham;
 import com.snethlios.utils.JdbcHelper;
-import com.snethlios.utils.MD5;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
