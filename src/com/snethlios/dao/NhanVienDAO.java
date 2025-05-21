@@ -6,7 +6,6 @@ package com.snethlios.dao;
 
 import com.snethlios.entity.NhanVien;
 import com.snethlios.utils.JdbcHelper;
-import com.snethlios.utils.MD5;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,9 +21,9 @@ public class NhanVienDAO extends SnethliosDAO<NhanVien, String> {
 
     @Override
     public void insert(NhanVien entity) {
-        String sql = "INSERT INTO NhanVien (MANV, HOTEN, VAITRO, NHIEMVU, MATKHAU, EMAIL, HINH) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO NhanVien (MANV, HOTEN, VAITRO, MATKHAU, EMAIL, HINH) VALUES (?, ?, ?, ?, ?, ?)";
         try {
-            JdbcHelper.update(sql, entity.getMaNV(), entity.getHoTen(), entity.getVaiTro(), entity.getNhiemVu(), MD5.getMd5(entity.getMatKhau()), entity.getEmail(), entity.getHinh());
+            JdbcHelper.update(sql, entity.getMaNV(), entity.getHoTen(), entity.getVaiTro(), entity.getMatKhau(), entity.getEmail(), entity.getHinh());
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -32,9 +31,9 @@ public class NhanVienDAO extends SnethliosDAO<NhanVien, String> {
 
     @Override
     public void update(NhanVien entity) {
-        String sql = "UPDATE NhanVien SET HOTEN=?, VAITRO=?, NHIEMVU=?, MATKHAU=?, EMAIL=?, HINH = ? WHERE MANV = ?";
+        String sql = "UPDATE NhanVien SET HOTEN=?, VAITRO=?, MATKHAU=?, EMAIL=?, HINH = ? WHERE MANV = ?";
         try {
-            JdbcHelper.update(sql, entity.getHoTen(), entity.getVaiTro(), entity.getNhiemVu(), MD5.getMd5(entity.getMatKhau()), entity.getEmail(), entity.getHinh(), entity.getMaNV());
+            JdbcHelper.update(sql, entity.getHoTen(), entity.getVaiTro(), entity.getMatKhau(), entity.getEmail(), entity.getHinh(), entity.getMaNV());
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -45,7 +44,7 @@ public class NhanVienDAO extends SnethliosDAO<NhanVien, String> {
                 + " set matkhau = ? \n"
                 + " where email = ? ";
         try {
-            JdbcHelper.update(sql, MD5.getMd5(entity.getMatKhau()), entity.getEmail());
+            JdbcHelper.update(sql, entity.getMatKhau(), entity.getEmail());
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,18 +76,23 @@ public class NhanVienDAO extends SnethliosDAO<NhanVien, String> {
     @Override
     protected List<NhanVien> selectBySQL(String sql, Object... args) {
         List<NhanVien> list = new ArrayList<>();
+        ResultSet rs = null;
         try {
-            ResultSet rs = null;
-            try {
-                rs = JdbcHelper.query(sql, args);
-                while (rs.next()) {
-                    NhanVien model = readFromResultSet(rs);
-                    list.add(model);
-                }
-            } finally {
-                rs.getStatement().getConnection().close();
+            rs = JdbcHelper.query(sql, args);
+            while (rs.next()) {
+                NhanVien model = readFromResultSet(rs);
+                list.add(model);
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.getStatement().getConnection().close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
         return list;
     }
@@ -104,7 +108,6 @@ public class NhanVienDAO extends SnethliosDAO<NhanVien, String> {
         nv.setMaNV(rs.getString("MANV"));
         nv.setHoTen(rs.getString("HOTEN"));
         nv.setVaiTro(rs.getBoolean("VAITRO"));
-        nv.setNhiemVu(rs.getString("NHIEMVU"));
         nv.setMatKhau(rs.getString("MATKHAU"));
         nv.setEmail(rs.getString("EMAIL"));
         nv.setHinh(rs.getString("HINH"));

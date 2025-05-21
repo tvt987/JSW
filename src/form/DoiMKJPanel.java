@@ -6,7 +6,6 @@ package form;
 
 import com.snethlios.dao.NhanVienDAO;
 import com.snethlios.utils.Auth;
-import com.snethlios.utils.MD5;
 import com.snethlios.utils.MsgBox;
 
 /**
@@ -31,6 +30,8 @@ public class DoiMKJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblMaNV4 = new javax.swing.JLabel();
+        lblMaNV5 = new javax.swing.JLabel();
         txtXacNhanMK = new javax.swing.JPasswordField();
         lblTitle = new javax.swing.JLabel();
         txtMatKhauHT = new javax.swing.JPasswordField();
@@ -44,6 +45,10 @@ public class DoiMKJPanel extends javax.swing.JPanel {
         txtMatKhauMoi = new javax.swing.JPasswordField();
         lblAnh = new javax.swing.JLabel();
 
+        lblMaNV4.setText("Tên đăng nhập:");
+
+        lblMaNV5.setText("Tên đăng nhập:");
+
         setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -53,8 +58,10 @@ public class DoiMKJPanel extends javax.swing.JPanel {
 
         lblMaNV.setText("Tên đăng nhập:");
 
+        btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/exit.png"))); // NOI18N
         btnHuy.setText("Hủy");
 
+        btnXacNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/check.png"))); // NOI18N
         btnXacNhan.setText("Xác nhận");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,35 +86,41 @@ public class DoiMKJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMatKhauHT)
                             .addComponent(lblMaNV))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMaNV, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                            .addComponent(txtMatKhauHT))
-                        .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblXacNhanMK)
-                            .addComponent(lblMatKhauMoi))
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtMaNV, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                    .addComponent(txtMatKhauHT))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(72, 72, 72)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblMatKhauMoi)
+                                            .addComponent(btnHuy))
+                                        .addGap(37, 37, 37))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblXacNhanMK)
+                                        .addGap(18, 18, 18))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnXacNhan)
+                                .addGap(192, 192, 192)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtMatKhauMoi)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtXacNhanMK, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
-                                .addGap(2, 2, 2))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnXacNhan)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnHuy)))))
+                                .addGap(2, 2, 2)))))
                 .addContainerGap())
-            .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,11 +139,11 @@ public class DoiMKJPanel extends javax.swing.JPanel {
                     .addComponent(txtMatKhauHT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblXacNhanMK)
                     .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnXacNhan)
                     .addComponent(btnHuy))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -147,6 +160,8 @@ public class DoiMKJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnXacNhan;
     private javax.swing.JLabel lblAnh;
     private javax.swing.JLabel lblMaNV;
+    private javax.swing.JLabel lblMaNV4;
+    private javax.swing.JLabel lblMaNV5;
     private javax.swing.JLabel lblMatKhauHT;
     private javax.swing.JLabel lblMatKhauMoi;
     private javax.swing.JLabel lblTitle;
@@ -157,18 +172,16 @@ public class DoiMKJPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtXacNhanMK;
     // End of variables declaration//GEN-END:variables
 
-    NhanVienDAO dao = new NhanVienDAO();
+NhanVienDAO dao = new NhanVienDAO();
 
     void doiMK() {
         String maNV = txtMaNV.getText();
         String MKHT = String.valueOf(txtMatKhauHT.getPassword());
         String matKhauMoi = String.valueOf(txtMatKhauMoi.getPassword());
         String xacNhanMK = String.valueOf(txtXacNhanMK.getPassword());
-        String matKhauMoiMD5 = MD5.getMd5(matKhauMoi);
-        String MKHTMD5 = MD5.getMd5(MKHT);
         if (!maNV.equalsIgnoreCase(Auth.user.getMaNV())) {
             MsgBox.alert(this, "Sai tên đăng nhập!");
-        } else if (!MKHTMD5.equalsIgnoreCase(Auth.user.getMatKhau())) {
+        } else if (!MKHT.equalsIgnoreCase(Auth.user.getMatKhau())) {
             MsgBox.alert(this, "Sai mật khẩu!");
         } else if (!matKhauMoi.equalsIgnoreCase(xacNhanMK)) {
             MsgBox.alert(this, "Xác nhận mật khẩu không đúng!");
