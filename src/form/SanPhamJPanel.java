@@ -818,6 +818,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     }
 
     void setForm(SanPham model) {
+ 
         txtmaSP.setText(model.getMaSp());
         txtTenSP.setText(model.getTenSp());
         txtLoai.setText(model.getLoai());

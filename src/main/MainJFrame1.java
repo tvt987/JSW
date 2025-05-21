@@ -34,7 +34,6 @@ public class MainJFrame1 extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    
     private ThongKeJPanel thongKe;
     private NewJPanel test;
     private TrangChuJPanel trangChu;
@@ -79,8 +78,10 @@ public class MainJFrame1 extends javax.swing.JFrame {
                         Logger.getLogger(MainJFrame1.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else if (index == 2) {
+                    sanPham = new SanPhamJPanel(); 
                     setForm(sanPham);
                     sanPham.fillComboboxKhuyenMai();
+
                 } else if (index == 3) {
                     setForm(khuyenMai);
                 } else if (index == 4) {
@@ -92,6 +93,7 @@ public class MainJFrame1 extends javax.swing.JFrame {
                 } else if (index == 6) {
                     setForm(khachHang);
                 } else if (index == 7) {
+                    
                     setForm(nhanVien);
                 } else if (index == 8) {
                     setForm(doiMK);
