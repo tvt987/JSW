@@ -88,6 +88,7 @@ public class MainJFrame1 extends javax.swing.JFrame {
                     setForm(lichSu);
                     lichSu.loadTablePhieuXuat();
                 } else if (index == 5) {
+                    ThongKeJPanel thongKe = new ThongKeJPanel();
                     setForm(thongKe);
                     thongKe.fillTableBang();
                 } else if (index == 6) {
