@@ -1,0 +1,476 @@
+﻿USE [master]
+GO
+/****** Object:  Database [SnethliosSneakers]    Script Date: 12/14/2022 10:44:15 AM ******/
+CREATE DATABASE [SnethliosSneakers]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'SnethliosSneakers', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\SnethliosSneakers.mdf' , SIZE = 3264KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'SnethliosSneakers_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\SnethliosSneakers_log.ldf' , SIZE = 816KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [SnethliosSneakers] SET COMPATIBILITY_LEVEL = 120
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [SnethliosSneakers].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [SnethliosSneakers] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [SnethliosSneakers] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [SnethliosSneakers] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [SnethliosSneakers] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [SnethliosSneakers] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET RECOVERY FULL 
+GO
+ALTER DATABASE [SnethliosSneakers] SET  MULTI_USER 
+GO
+ALTER DATABASE [SnethliosSneakers] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [SnethliosSneakers] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [SnethliosSneakers] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [SnethliosSneakers] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [SnethliosSneakers] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'SnethliosSneakers', N'ON'
+GO
+USE [SnethliosSneakers]
+GO
+/****** Object:  Table [dbo].[CTPX]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CTPX](
+	[SOPX] [int] NOT NULL,
+	[MASP] [varchar](20) NOT NULL,
+	[GIABAN] [float] NOT NULL,
+	[SOLUONG] [int] NULL,
+ CONSTRAINT [CT] PRIMARY KEY CLUSTERED 
+(
+	[SOPX] ASC,
+	[MASP] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[GIOHANG]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[GIOHANG](
+	[MASP] [varchar](20) NOT NULL,
+	[TENSP] [nvarchar](50) NOT NULL,
+	[LOAI] [nvarchar](50) NOT NULL,
+	[DONGIA] [float] NOT NULL,
+	[SOLUONG] [int] NOT NULL,
+	[MAUSAC] [nvarchar](15) NOT NULL,
+	[KICHTHUOC] [int] NOT NULL,
+	[HANG] [nvarchar](40) NOT NULL,
+	[HINH] [varchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MASP] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Hinh]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Hinh](
+	[MAHINH] [varchar](20) NOT NULL,
+	[HINHA] [varchar](50) NULL,
+	[HINHB] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MAHINH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[KHACHHANG]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[KHACHHANG](
+	[MAKH] [nvarchar](50) NOT NULL,
+	[TENKH] [nvarchar](50) NOT NULL,
+	[DIACHI] [nvarchar](40) NOT NULL,
+	[SDT] [varchar](10) NOT NULL,
+	[GIOITINH] [bit] NOT NULL,
+	[GHICHU] [nvarchar](50) NOT NULL,
+	[DIEM] [int] NOT NULL,
+	[NGAYTAO] [date] NOT NULL,
+	[NGAYHETHAN] [date] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MAKH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[KHUYENMAI]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[KHUYENMAI](
+	[MAKM] [varchar](20) NOT NULL,
+	[TENKM] [nvarchar](50) NOT NULL,
+	[MUCGIAMGIA] [int] NOT NULL,
+	[TRANGTHAI] [bit] NOT NULL,
+	[BATDAUKM] [date] NULL,
+	[KETTHUCKM] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MAKM] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[NHANVIEN]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[NHANVIEN](
+	[MANV] [varchar](50) NOT NULL,
+	[HOTEN] [nvarchar](50) NOT NULL,
+	[VAITRO] [bit] NOT NULL,
+	[NHIEMVU] [nvarchar](50) NOT NULL,
+	[MATKHAU] [nvarchar](50) NOT NULL,
+	[EMAIL] [varchar](50) NOT NULL,
+	[HINH] [varchar](50) NOT NULL,
+	[QR] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MANV] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[PHIEUXUAT]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PHIEUXUAT](
+	[SOPX] [int] IDENTITY(1,1) NOT NULL,
+	[NGAYTAO] [date] NOT NULL,
+	[LYDOHUY] [nvarchar](100) NOT NULL,
+	[TRANGTHAI] [nvarchar](100) NOT NULL,
+	[HINHTHUCTHANHTOAN] [nvarchar](100) NOT NULL,
+	[MANV] [varchar](50) NULL,
+	[MAKH] [nvarchar](50) NULL,
+	[TONGTIEN] [float] NOT NULL,
+	[TONGGIAMGIA] [float] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SOPX] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SANPHAM]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SANPHAM](
+	[MASP] [varchar](20) NOT NULL,
+	[TENSP] [nvarchar](50) NOT NULL,
+	[LOAI] [nvarchar](50) NOT NULL,
+	[DONGIA] [float] NOT NULL,
+	[SOLUONG] [int] NOT NULL,
+	[MAUSAC] [nvarchar](15) NOT NULL,
+	[KICHTHUOC] [int] NOT NULL,
+	[HANG] [nvarchar](40) NOT NULL,
+	[NGAYNHAP] [date] NULL,
+	[MAHINH] [varchar](20) NULL,
+	[MANV] [varchar](50) NULL,
+	[MAKM] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MASP] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (1, N'AD1', 900, 1)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (2, N'AD12', 400, 5)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (3, N'AF11999', 600, 3)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (4, N'AF11999', 900, 2)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (5, N'CV1', 400, 6)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (6, N'CV134', 600, 2)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (7, N'AD1', 900, 4)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (8, N'CV134', 600, 2)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (9, N'AD12', 600, 2)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (10, N'AF11999', 900, 4)
+INSERT [dbo].[CTPX] ([SOPX], [MASP], [GIABAN], [SOLUONG]) VALUES (12, N'PM1', 900, 3)
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'H1', N'adidas_rivalry1.png', N'adidas_rivalry2.png')
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'h2', N'adidasGrand1.jpg', N'adidasGrand2.jpg')
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'h3', N'CONVERSE CHUCK1.jpg', N'CONVERSE CHUCK2.jpg')
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'H4', N'dame1.png', N'dame2.png')
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'H5', N'VaultAuthentic1.png', N'VaultAuthentic2.png')
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'H6', N'AF1_LowCanvas.png', N'AF1_LowCanvas1.png')
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'H7', N'Jordan1_RetroHigh1.png', N'Jordan1_RetroHigh2.png')
+INSERT [dbo].[Hinh] ([MAHINH], [HINHA], [HINHB]) VALUES (N'H8', N'PumaPuzzle1.png', N'PumaPuzzle2.png')
+
+INSERT [dbo].[KHACHHANG] ([MAKH], [TENKH], [DIACHI], [SDT], [GIOITINH], [GHICHU], [DIEM], [NGAYTAO], [NGAYHETHAN]) 
+VALUES (N'KH001', N'Lê Văn Quý', N'1660/48A Lê Hồng Phong,quận 2 TPHCM', N'0383099555', 0, N'Giao vào buổi chiều', 18, CAST(N'2025-01-10' AS Date), CAST(N'2025-10-11' AS Date))
+INSERT [dbo].[KHACHHANG] ([MAKH], [TENKH], [DIACHI], [SDT], [GIOITINH], [GHICHU], [DIEM], [NGAYTAO], [NGAYHETHAN]) 
+VALUES (N'KH002', N'Nguyễn Xuân Quy', N'2210/68 quốc lộ 1A,quận 12 TPHCM', N'0353095455', 1, N'Giao buổi sáng', 30, CAST(N'2025-02-15' AS Date), CAST(N'2025-10-11' AS Date))
+INSERT [dbo].[KHACHHANG] ([MAKH], [TENKH], [DIACHI], [SDT], [GIOITINH], [GHICHU], [DIEM], [NGAYTAO], [NGAYHETHAN]) 
+VALUES (N'KH003', N'Trần Quốc Kỳ', N'2310 Nguyễn Oanh,quận Gò Vấp TPHCM', N'0383255625', 0, N'Gọi trước 30 phút', 2, CAST(N'2025-03-11' AS Date), CAST(N'2025-09-11' AS Date))
+INSERT [dbo].[KHACHHANG] ([MAKH], [TENKH], [DIACHI], [SDT], [GIOITINH], [GHICHU], [DIEM], [NGAYTAO], [NGAYHETHAN]) 
+VALUES (N'KH004', N'Lê Đặng Trung Anh', N'2356/12 Lê Đức Thọ,quận Gò Vấp TPHCM', N'0393233451', 0, N'Giao sau chiều', 4, CAST(N'2025-04-12' AS Date), CAST(N'2025-12-12' AS Date))
+INSERT [dbo].[KHACHHANG] ([MAKH], [TENKH], [DIACHI], [SDT], [GIOITINH], [GHICHU], [DIEM], [NGAYTAO], [NGAYHETHAN]) 
+VALUES (N'KH016', N'Lê Văn Quý', N'1660/48A Lê Hồng Phong,quận 2 TPHCM', N'0383099555', 0, N'Giao vào buổi chiều', 18, CAST(N'2025-01-10' AS Date), CAST(N'2025-10-11' AS Date))
+
+INSERT [dbo].[KHUYENMAI] ([MAKM], [TENKM], [MUCGIAMGIA], [TRANGTHAI], [BATDAUKM], [KETTHUCKM]) 
+VALUES (N'Không', N'0', 0, 0, CAST(N'2025-01-01' AS Date), CAST(N'2039-12-31' AS Date))
+INSERT [dbo].[KHUYENMAI] ([MAKM], [TENKM], [MUCGIAMGIA], [TRANGTHAI], [BATDAUKM], [KETTHUCKM]) 
+VALUES (N'KM01', N'Khuyến mãi 1', 0, 0, CAST(N'2025-02-01' AS Date), CAST(N'2025-03-01' AS Date))
+INSERT [dbo].[KHUYENMAI] ([MAKM], [TENKM], [MUCGIAMGIA], [TRANGTHAI], [BATDAUKM], [KETTHUCKM]) 
+VALUES (N'KM02', N'Khuyến mãi 2', 10, 1, CAST(N'2025-03-15' AS Date), CAST(N'2025-04-15' AS Date))
+INSERT [dbo].[KHUYENMAI] ([MAKM], [TENKM], [MUCGIAMGIA], [TRANGTHAI], [BATDAUKM], [KETTHUCKM]) 
+VALUES (N'KM03', N'Khuyến mãi 3', 15, 1, CAST(N'2025-04-20' AS Date), CAST(N'2025-05-20' AS Date))
+INSERT [dbo].[KHUYENMAI] ([MAKM], [TENKM], [MUCGIAMGIA], [TRANGTHAI], [BATDAUKM], [KETTHUCKM]) 
+VALUES (N'KM04', N'Khuyến mãi 4', 12, 1, CAST(N'2025-06-01' AS Date), CAST(N'2025-07-01' AS Date))
+
+INSERT [dbo].[NHANVIEN] ([MANV], [HOTEN], [VAITRO], [NHIEMVU], [MATKHAU], [EMAIL], [HINH], [QR]) VALUES (N'HaiNV', N'Nguyễn Văn Hải', 0, N'Nhân viên', N'fa1ea9305375e20b5201d88b9074ca25', N'hainv@gmail.com', N'sv1.png', NULL)
+INSERT [dbo].[NHANVIEN] ([MANV], [HOTEN], [VAITRO], [NHIEMVU], [MATKHAU], [EMAIL], [HINH], [QR]) VALUES (N'HoanHD', N'Huỳnh Đức Hoàn', 0, N'Nhân viên', N'E10ADC3949BA59ABBE56E057F20F883E', N'hoanhd@gmail.com', N'hoan.jpg', N'https://hoan.com')
+INSERT [dbo].[NHANVIEN] ([MANV], [HOTEN], [VAITRO], [NHIEMVU], [MATKHAU], [EMAIL], [HINH], [QR]) VALUES (N'TeoNV', N'Nguyễn Văn Tèo', 1, N'Qu?n lý', N'37732380436F156186F70FC5390ACDB6', N'teonv@gmail.com', N'teo.jpg', N'https://teo.com')
+INSERT [dbo].[NHANVIEN] ([MANV], [HOTEN], [VAITRO], [NHIEMVU], [MATKHAU], [EMAIL], [HINH], [QR]) VALUES (N'KietLA', N'Lê Anh Kiệt', 0, N'Nhân viên', N'12345678', N'kietla@gmail.com', N'hinh2.png', NULL)
+
+SET IDENTITY_INSERT [dbo].[PHIEUXUAT] ON
+INSERT [dbo].[PHIEUXUAT] ([SOPX], [NGAYTAO], [LYDOHUY], [TRANGTHAI], [HINHTHUCTHANHTOAN], [MANV], [MAKH], [TONGTIEN], [TONGGIAMGIA]) 
+VALUES (1, CAST(N'2025-01-15' AS Date), N'Không', N'Đã giao', N'Đặt hàng', N'HoanHD', N'KH001', 930, 324)
+INSERT [dbo].[PHIEUXUAT] ([SOPX], [NGAYTAO], [LYDOHUY], [TRANGTHAI], [HINHTHUCTHANHTOAN], [MANV], [MAKH], [TONGTIEN], [TONGGIAMGIA]) 
+VALUES (2, CAST(N'2025-02-01' AS Date), N'Không', N'Đã giao', N'Trực tiếp', N'HaiNV', N'KH002', 210, 420)
+INSERT [dbo].[PHIEUXUAT] ([SOPX], [NGAYTAO], [LYDOHUY], [TRANGTHAI], [HINHTHUCTHANHTOAN], [MANV], [MAKH], [TONGTIEN], [TONGGIAMGIA]) 
+VALUES (3, CAST(N'2025-03-10' AS Date), N'Không', N'Đã giao', N'Trực tiếp', N'HoanHD', N'KH003', 610, 320)
+INSERT [dbo].[PHIEUXUAT] ([SOPX], [NGAYTAO], [LYDOHUY], [TRANGTHAI], [HINHTHUCTHANHTOAN], [MANV], [MAKH], [TONGTIEN], [TONGGIAMGIA]) 
+VALUES (4, CAST(N'2025-04-15' AS Date), N'Không', N'Đã giao', N'Đặt hàng', N'KietLA', N'KH004', 510, 220)
+INSERT [dbo].[PHIEUXUAT] ([SOPX], [NGAYTAO], [LYDOHUY], [TRANGTHAI], [HINHTHUCTHANHTOAN], [MANV], [MAKH], [TONGTIEN], [TONGGIAMGIA]) 
+VALUES (5, CAST(N'2025-05-10' AS Date), N'Không', N'Đã giao', N'Trực tiếp', N'KietLA', N'KH002', 210, 120)
+INSERT [dbo].[PHIEUXUAT] ([SOPX], [NGAYTAO], [LYDOHUY], [TRANGTHAI], [HINHTHUCTHANHTOAN], [MANV], [MAKH], [TONGTIEN], [TONGGIAMGIA]) 
+VALUES (6, CAST(N'2025-06-10' AS Date), N'Không', N'Đã giao', N'Trực tiếp', N'HoanHD', N'KH003', 810, 220)
+INSERT [dbo].[PHIEUXUAT] ([SOPX], [NGAYTAO], [LYDOHUY], [TRANGTHAI], [HINHTHUCTHANHTOAN], [MANV], [MAKH], [TONGTIEN], [TONGGIAMGIA]) 
+VALUES (7, CAST(N'2025-07-15' AS Date), N'', N'Đã Thanh Toán', N'Chuyển Khoản', N'TeoNV', N'KH001', 1110, 300)
+
+SET IDENTITY_INSERT [dbo].[PHIEUXUAT] OFF
+INSERT [dbo].[SANPHAM] 
+VALUES (N'AD1', N'Adidas Rivalry', N'Giày thể thao', 900, 40, N'Trắng', 41, N'Adidas', CAST(N'2025-01-10' AS Date), N'H1', N'TeoNV', N'KM01')
+INSERT [dbo].[SANPHAM] 
+VALUES (N'AD12', N'Dame 8', N'Giày thể thao', 900, 40, N'Xanh', 41, N'Adidas', CAST(N'2025-01-15' AS Date), N'H4', N'TeoNV', N'KM01')
+INSERT [dbo].[SANPHAM] 
+VALUES (N'AD123', N'Vault_Authentic', N'Giày đi chơi', 900, 40, N'Đen', 41, N'VANS', CAST(N'2025-02-05' AS Date), N'H5', N'TeoNV', NULL)
+INSERT [dbo].[SANPHAM] 
+VALUES (N'AF11999', N'AF1 Low Canvas', N'Giày thể thao', 900, 20, N'Trắng', 39, N'Nike', CAST(N'2025-03-01' AS Date), N'H6', N'TeoNV', N'KM02')
+INSERT [dbo].[SANPHAM] 
+VALUES (N'AF12', N'Jordan1 Retro High', N'Giày thể thao', 900, 20, N'Trắng, Nâu', 39, N'Nike', CAST(N'2025-03-15' AS Date), N'H7', N'TeoNV', N'KM01')
+INSERT [dbo].[SANPHAM] 
+VALUES (N'CV1', N'Converse Chuck', N'Giày thể thao', 900, 40, N'Đen', 39, N'CONVERS', CAST(N'2025-04-10' AS Date), N'H3', N'TeoNV', N'KM01')
+INSERT [dbo].[SANPHAM] 
+VALUES (N'CV134', N'Converse', N'Giày thể thao', 900, 40, N'Đen', 41, N'CONVERS', CAST(N'2025-04-20' AS Date), N'H3', N'TeoNV', N'KM03')
+INSERT [dbo].[SANPHAM] 
+VALUES (N'PM1', N'Puma Puzzle', N'Giày thể thao', 900, 40, N'Trắng, đỏ', 41, N'PUMA', CAST(N'2025-05-05' AS Date), N'H8', N'TeoNV', N'KM03')
+
+ALTER TABLE [dbo].[CTPX]  WITH CHECK ADD FOREIGN KEY([MASP])
+REFERENCES [dbo].[SANPHAM] ([MASP])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[CTPX]  WITH CHECK ADD FOREIGN KEY([SOPX])
+REFERENCES [dbo].[PHIEUXUAT] ([SOPX])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[PHIEUXUAT]  WITH CHECK ADD FOREIGN KEY([MAKH])
+REFERENCES [dbo].[KHACHHANG] ([MAKH])
+GO
+ALTER TABLE [dbo].[PHIEUXUAT]  WITH CHECK ADD FOREIGN KEY([MANV])
+REFERENCES [dbo].[NHANVIEN] ([MANV])
+GO
+ALTER TABLE [dbo].[SANPHAM]  WITH CHECK ADD FOREIGN KEY([MAHINH])
+REFERENCES [dbo].[Hinh] ([MAHINH])
+GO
+ALTER TABLE [dbo].[SANPHAM]  WITH CHECK ADD FOREIGN KEY([MAKM])
+REFERENCES [dbo].[KHUYENMAI] ([MAKM])
+GO
+ALTER TABLE [dbo].[SANPHAM]  WITH CHECK ADD FOREIGN KEY([MANV])
+REFERENCES [dbo].[NHANVIEN] ([MANV])
+GO
+/****** Object:  StoredProcedure [dbo].[sp_doanhthu]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_doanhthu](@year int)
+as begin
+	select convert(int, MONTH(NGAYTAO)) as 'Thang',
+	 convert(int,sum(ct.SOLUONG)) as 'Tong so ban',
+	 convert(int,sum(ct.SOLUONG*ct.GIABAN) ) as 'Tong gia ban',
+	 convert(int, sum(px.TONGGIAMGIA) )as 'TongGiamGia'
+from PHIEUXUAT px 
+				inner join CTPX ct on px.SOPX = ct.SOPX
+where YEAR(NGAYTAO) = @year
+group by MONTH(NGAYTAO)
+end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_phieuxuat]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_phieuxuat]
+as
+begin
+	select px.SOPX, nv.HOTEN, kh.TENKH, px.NGAYTAO, px.TRANGTHAI, nv.MANV, kh.SDT ,kh.DIACHI
+	from NHANVIEN nv inner join  PHIEUXUAT px on px.MANV = nv.MANV
+				inner join KHACHHANG kh on kh.MAKH = px.MAKH 
+end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_sanpham]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_sanpham]
+as begin
+	select sp.MASP as N'Ma SP',
+	 sp.TENSP as 'Ten SP',
+	 sum(ct.SOLUONG) as 'So luong da ban',
+	 SUM(sp.SOLUONG) as 'So luong con lai'
+from PHIEUXUAT px 
+				inner join CTPX ct on px.SOPX = ct.SOPX
+				inner join SANPHAM sp on ct.MASP = sp.MASP
+group by sp.TENSP, sp.MASP
+end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_sanPhamTheoNgay]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_sanPhamTheoNgay](@tuNgay date, @denNgay date)
+as begin
+select sp.MASP as N'Ma SP',
+	 sp.TENSP as 'Ten SP',
+	 sum(ct.SOLUONG) as 'So luong da ban',
+	 SUM(sp.SOLUONG) as 'So luong con lai'
+from PHIEUXUAT px 
+				inner join CTPX ct on px.SOPX = ct.SOPX
+				inner join SANPHAM sp on ct.MASP = sp.MASP
+--where convert(date, NGAYTAO, 105) >= convert(varchar, @tuNgay ,105) and convert(date, NGAYTAO ,105) <= convert(varchar, @denNgay ,105)
+where convert(date, NGAYTAO) >= convert(nvarchar, @tuNgay ,105) and convert(date, NGAYTAO) <= convert(nvarchar, @denNgay ,105)
+group by sp.TENSP, sp.MASP
+end
+GO
+/****** Object:  StoredProcedure [dbo].[sp_TTinSanPham]    Script Date: 12/14/2022 10:44:15 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sp_TTinSanPham](@sopx int)
+as
+begin
+	select sp.MASP, sp.TENSP, CTPX.SOLUONG, sp.DONGIA, km.MUCGIAMGIA, sum(ctpx.GIABAN*ctpx.SOLUONG) as 'THANHTIEN', px.TRANGTHAI, px.LYDOHUY
+	from PHIEUXUAT px inner join CTPX on px.SOPX = ctpx.SOPX
+					inner join SANPHAM sp on ctpx.MASP = sp.MASP
+					inner join KHUYENMAI km on km.MAKM = sp.MAKM
+	where px.SOPX = @sopx
+	group by sp.MASP, sp.TENSP, CTPX.SOLUONG, sp.DONGIA, km.MUCGIAMGIA, px.TRANGTHAI, px.LYDOHUY
+end
+GO
+USE [master]
+GO
+ALTER DATABASE [SnethliosSneakers] SET  READ_WRITE 
+GO
+
+
+DELETE FROM CTPX
+WHERE SOPX NOT IN (SELECT SOPX FROM PHIEUXUAT);
+
+
+ALTER TABLE CTPX
+ADD CONSTRAINT FK_CTPX_SOPX FOREIGN KEY (SOPX) REFERENCES PHIEUXUAT(SOPX);

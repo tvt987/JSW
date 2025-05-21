@@ -12,13 +12,13 @@ import java.sql.SQLException;
 
 /**
  *
- * @author HUYNH DUC HOAN
+ * @author HUYNH DUC HOANx
  */
 public class JdbcHelper {
     static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=SnethliosSneakers";
     static String user = "sa";
-    static String pass = "123";
+    static String pass = "songlong";
 
     static {
         try {

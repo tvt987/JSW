@@ -225,7 +225,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
                         .addComponent(lblAnh)
                         .addGap(134, 134, 134)
                         .addComponent(lblTitile1)))
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

@@ -265,6 +265,12 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
         ));
         jScrollPane5.setViewportView(tblGioHang);
 
+        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTongTienActionPerformed(evt);
+            }
+        });
+
         btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pay.png"))); // NOI18N
         btnThanhToan.setText("Thanh Toán");
         btnThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -920,7 +926,7 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(txtDiaChi_DH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -1620,6 +1626,10 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
         // TODO add your handling code here:
         this.deleteHoaDon();
     }//GEN-LAST:event_btnXoaHoaDonActionPerformed
+
+    private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTongTienActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
