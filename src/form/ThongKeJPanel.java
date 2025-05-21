@@ -490,6 +490,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         this.fillComboBoxNam();
         fillTableDoanhThu();
         fillTableSanPham();
+        fillTableBang();
 
         if (!Auth.isManager()) {
             Tabs.remove(0);

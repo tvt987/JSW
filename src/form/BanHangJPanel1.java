@@ -265,6 +265,9 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
         ));
         jScrollPane5.setViewportView(tblGioHang);
 
+        txtTongTien.setEditable(false);
+        txtTongTien.setBackground(new java.awt.Color(255, 255, 255));
+
         btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pay.png"))); // NOI18N
         btnThanhToan.setText("Thanh Toán");
         btnThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1150,6 +1153,11 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
                 cboTrangThaiHoaDonActionPerformed(evt);
             }
         });
+        cboTrangThaiHoaDon.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cboTrangThaiHoaDonPropertyChange(evt);
+            }
+        });
 
         btnXoaHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete (2).png"))); // NOI18N
         btnXoaHoaDon.setText("Xóa");
@@ -1621,6 +1629,10 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
         this.deleteHoaDon();
     }//GEN-LAST:event_btnXoaHoaDonActionPerformed
 
+    private void cboTrangThaiHoaDonPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cboTrangThaiHoaDonPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboTrangThaiHoaDonPropertyChange
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddGioHang;
@@ -1859,12 +1871,14 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
 
     void loadGioHang() {
         DefaultTableModel model = (DefaultTableModel) tblGioHang.getModel();
+        double sum = 0.0;
         model.setRowCount(0);
         for (GioHang gh : listGH) {
+            sum += Double.parseDouble(String.valueOf(gh.getThanhTien()));
             Object[] row = new Object[]{gh.getMaSp(), gh.getTenSp(), gh.getLoai(), gh.getDonGia(), gh.getSoLuong(), gh.getThanhTien(), gh.getMucGiamGia()};
             model.addRow(row);
         }
-
+        txtTongTien.setText(String.valueOf(sum));
     }
 
     PhieuXuat getForm() {
@@ -2420,7 +2434,7 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
             if (MsgBox.confirm(this, "Bạn muốn xóa hóa đơn được chọn được chọn")) {
                 for (int row : tblHoaDon.getSelectedRows()) {
                     int maHd = (int) tblHoaDon.getValueAt(row, 1);
-                    pxDao.delete(maHd);;
+                    pxDao.delete(maHd);
                     MsgBox.alert(this, "Xóa thành công!");
                 }
                 this.loadTableHoaDon();

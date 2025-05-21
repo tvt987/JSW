@@ -416,6 +416,8 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     }
 
     boolean isValidate() {
+        
+        
         NhanVien nv = getForm();
         if (dao.selectByID(nv.getMaNV()) != null) {
             MsgBox.alert(this, "Mã đã tồn tại");

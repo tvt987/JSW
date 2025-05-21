@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/com/snethlios/entity/NhanVien.java</file>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/com/snethlios/dao/NhanVienDAO.java</file>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/com/snethlios/utils/MD5.java</file>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/com/snethlios/dao/PhieuXuatDAO.java</file>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/form/DangNhapJDialog11.java</file>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/com/snethlios/utils/JdbcHelper.java</file>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/form/BanHangJPanel1.java</file>
-            <file>file:/D:/UIT/Java/Lab/ui_test1/src/form/QuenMatKhauJDialog.java</file>
+            <file>file:/D:/UIT/Java/Lab/JSW/src/form/ThemAnhJDialog.java</file>
+            <file>file:/D:/UIT/Java/Lab/JSW/src/form/NhanVienJPanel.java</file>
+            <file>file:/D:/UIT/Java/Lab/JSW/src/form/QuenMatKhauJDialog.java</file>
+            <file>file:/D:/UIT/Java/Lab/JSW/src/com/snethlios/entity/Hinh.java</file>
+            <file>file:/D:/UIT/Java/Lab/JSW/src/com/snethlios/dao/SanPhamDao.java</file>
+            <file>file:/D:/UIT/Java/Lab/JSW/src/form/SanPhamJPanel.java</file>
         </group>
     </open-files>
 </project-private>
