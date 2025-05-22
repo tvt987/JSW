@@ -8,12 +8,12 @@ package form;
  *
  * @author HUYNH DUC HOAN
  */
-public class Slide2 extends javax.swing.JPanel {
+public class Slide3 extends javax.swing.JPanel {
 
     /**
      * Creates new form Slide2
      */
-    public Slide2() {
+    public Slide3() {
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class Slide2 extends javax.swing.JPanel {
 
         pictureBox1 = new swing.PictureBox();
 
-        pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/icon/bia2.jpg"))); // NOI18N
+        pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/icon/bia3.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

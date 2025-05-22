@@ -83,7 +83,12 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         lblUserName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lblUserName.setText("Username:");
 
-        txtMaNV.setText("TeoNV");
+        txtMaNV.setText("KietLA");
+        txtMaNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaNVActionPerformed(evt);
+            }
+        });
 
         lblPassWord.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lblPassWord.setText("Password:");
@@ -116,7 +121,12 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         lblTitle2.setForeground(new java.awt.Color(153, 0, 0));
         lblTitle2.setText("LOGIN");
 
-        txtMatKhau.setText("songlong");
+        txtMatKhau.setText("12345678");
+        txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatKhauActionPerformed(evt);
+            }
+        });
 
         btnQR.setText("QR");
         btnQR.addActionListener(new java.awt.event.ActionListener() {
@@ -228,9 +238,9 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
                 .addContainerGap(342, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 600, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 600, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -240,7 +250,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(lblAnh)
                 .addGap(18, 18, 18)
                 .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,9 +263,9 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
                 .addGap(40, 40, 40))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 234, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 234, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -294,6 +304,14 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         // TODO add your handling code here:
         new QuenMatKhauJDialog(null, true).setVisible(true);
     }//GEN-LAST:event_btnQuenMKActionPerformed
+
+    private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaNVActionPerformed
+
+    private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatKhauActionPerformed
 
     /**
      * @param args the command line arguments
