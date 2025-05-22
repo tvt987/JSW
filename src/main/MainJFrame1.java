@@ -94,15 +94,18 @@ public class MainJFrame1 extends javax.swing.JFrame {
                 } else if (index == 6) {
                     setForm(khachHang);
                 } else if (index == 7) {
-                    
+                    nhanVien = new NhanVienJPanel();
                     setForm(nhanVien);
                 } else if (index == 8) {
                     setForm(doiMK);
                 } else if (index == 9) {
-                    if (MsgBox.confirm(test, "Bạn Có Muốn Kết Thúc?")) {
+                    if (MsgBox.confirm(test, "Bạn có chắc chắn muốn đăng xuất không?")) {
                         dangXuat();
                     }
-
+                } else if (index == 10) {
+                    if (MsgBox.confirm(test, "Bạn Có Muốn Kết Thúc?")) {
+                        ketThuc();
+                    }
                 }
             }
         });
@@ -212,12 +215,24 @@ public class MainJFrame1 extends javax.swing.JFrame {
 
     void init() {
         new ChaoJDialog(this, true).setVisible(true);
-        new DangNhapJDialog11(this, true).setVisible(true);
+          if (Auth.user == null) {
+       new DangNhapJDialog11(this, true).setVisible(true);
+          
+    }  
 //        login.setVisible(true);
         this.setIconImage(XImage.getApImage());
     }
 
-    void dangXuat() {
+   void dangXuat() {
+    this.dispose(); 
+    DangNhapJDialog11 dialog = new DangNhapJDialog11(null, true);
+    dialog.setVisible(true);
+    if (Auth.user != null) {
+        new MainJFrame1().setVisible(true);
+    }
+}
+
+    void ketThuc() {
         System.exit(0);
     }
 }

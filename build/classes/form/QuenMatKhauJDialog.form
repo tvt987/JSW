@@ -71,7 +71,6 @@
     <Component class="javax.swing.JTextField" name="txtEmail">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="hoanhuynh12344@gmail.com"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>

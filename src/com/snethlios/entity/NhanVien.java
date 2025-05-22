@@ -12,7 +12,6 @@ public class NhanVien {
     private String maNV;
     private String hoTen;
     private boolean vaiTro;
-    private String nhiemVu;
     private String matKhau;
     private String email;
     private String hinh;
@@ -25,7 +24,6 @@ public class NhanVien {
         this.maNV = maNV;
         this.hoTen = hoTen;
         this.vaiTro = vaiTro;
-        this.nhiemVu = nhiemVu;
         this.matKhau = matKhau;
         this.email = email;
         this.hinh = hinh;
@@ -54,14 +52,6 @@ public class NhanVien {
 
     public void setVaiTro(boolean vaiTro) {
         this.vaiTro = vaiTro;
-    }
-
-    public String getNhiemVu() {
-        return nhiemVu;
-    }
-
-    public void setNhiemVu(String nhiemVu) {
-        this.nhiemVu = nhiemVu;
     }
 
     public String getMatKhau() {

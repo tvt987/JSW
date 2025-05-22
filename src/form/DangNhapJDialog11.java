@@ -16,7 +16,6 @@ import com.google.zxing.common.HybridBinarizer;
 import com.snethlios.dao.NhanVienDAO;
 import com.snethlios.entity.NhanVien;
 import com.snethlios.utils.Auth;
-import com.snethlios.utils.MD5;
 import com.snethlios.utils.MsgBox;
 import com.snethlios.utils.XImage;
 import java.awt.Dimension;
@@ -65,7 +64,6 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         btnQuenMK = new javax.swing.JButton();
         lblTitle2 = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
-        btnQR = new javax.swing.JButton();
         lblAnh = new javax.swing.JLabel();
         lblTitile1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -83,12 +81,11 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         lblUserName.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lblUserName.setText("Username:");
 
-        txtMaNV.setText("TeoNV");
-
         lblPassWord.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lblPassWord.setText("Password:");
 
         btnLogin.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/check.png"))); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +94,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         });
 
         btnSignUp.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnSignUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/exit.png"))); // NOI18N
         btnSignUp.setText("Exit");
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +103,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         });
 
         btnQuenMK.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnQuenMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/history.png"))); // NOI18N
         btnQuenMK.setText("Quên Mật Khẩu?");
         btnQuenMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,15 +115,6 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         lblTitle2.setForeground(new java.awt.Color(153, 0, 0));
         lblTitle2.setText("LOGIN");
 
-        txtMatKhau.setText("123");
-
-        btnQR.setText("QR");
-        btnQR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQRActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
         pnlLogin.setLayout(pnlLoginLayout);
         pnlLoginLayout.setHorizontalGroup(
@@ -132,28 +122,26 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
             .addGroup(pnlLoginLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlLoginLayout.createSequentialGroup()
-                        .addComponent(lblUserName)
-                        .addGap(30, 30, 30)
-                        .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlLoginLayout.createSequentialGroup()
-                        .addComponent(lblPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMatKhau)
-                            .addGroup(pnlLoginLayout.createSequentialGroup()
-                                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnQR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnQuenMK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(lblPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUserName))
+                .addGap(18, 18, 18)
+                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMatKhau, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlLoginLayout.createSequentialGroup()
+                        .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaNV))
+                .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93))
+                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
+                        .addComponent(lblTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
+                        .addComponent(btnQuenMK, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102))))
         );
         pnlLoginLayout.setVerticalGroup(
             pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,12 +159,10 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
                 .addGap(44, 44, 44)
                 .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSignUp)
-                    .addComponent(btnLogin))
-                .addGap(29, 29, 29)
-                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnQuenMK)
-                    .addComponent(btnQR))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(btnQuenMK)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         lblAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo.jpg"))); // NOI18N
@@ -225,7 +211,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
                         .addComponent(lblAnh)
                         .addGap(134, 134, 134)
                         .addComponent(lblTitile1)))
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -240,7 +226,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(lblAnh)
                 .addGap(18, 18, 18)
                 .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,12 +261,6 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         // TODO add your handling code here:
         exit();
     }//GEN-LAST:event_btnSignUpActionPerformed
-
-    private void btnQRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQRActionPerformed
-        // TODO add your handling code here:
- 
-        pnlQR.setVisible(true);
-    }//GEN-LAST:event_btnQRActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
@@ -321,13 +301,7 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
             java.util.logging.Logger.getLogger(DangNhapJDialog11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -347,7 +321,6 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnQR;
     private javax.swing.JButton btnQuenMK;
     private javax.swing.JButton btnSignUp;
     private javax.swing.JPanel jPanel3;
@@ -380,7 +353,6 @@ public class DangNhapJDialog11 extends javax.swing.JDialog implements Runnable, 
         if (validateForm()) {
             String maNV = txtMaNV.getText();
             String matKhau = String.valueOf(txtMatKhau.getPassword());
-//            String matKhauMD5 = MD5.getMd5(matKhau);
             NhanVien nhanVien = dao.selectByID(maNV);
             if (nhanVien == null) {
                 MsgBox.alert(this, "Sai tên đăng nhập");

@@ -58,7 +58,6 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         jLabel1.setText("Quên Mật khẩu");
 
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setText("hoanhuynh12344@gmail.com");
         txtEmail.setToolTipText("");
         txtEmail.setName(""); // NOI18N
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -187,7 +186,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
             System.out.println("sending...");
             // Send message
             Transport.send(message);
-            MsgBox.alert(this, "Gui mail thanh cong");
+            MsgBox.alert(this, "Gửi mail thành công, mật khẩu đã được đặt lại");
         } catch (MessagingException mex) {
             mex.printStackTrace();
             MsgBox.alert(this, "Gửi mail thất bại");
