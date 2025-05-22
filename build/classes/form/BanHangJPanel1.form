@@ -838,6 +838,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtTen_HD">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel5">
                           <Properties>
@@ -845,6 +848,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtDiem_HD">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnSuDung">
                           <Properties>
@@ -984,6 +990,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtTongTienHang_HD">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                           <Events>
                             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTongTienHang_HDKeyReleased"/>
                           </Events>
@@ -994,6 +1003,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtGiamGia">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel8">
                           <Properties>
@@ -1019,6 +1031,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtKhachCanTra">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtKhachCanTraActionPerformed"/>
                             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtKhachCanTraKeyReleased"/>
@@ -1041,6 +1056,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtTienConLai">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel22">
                           <Properties>
