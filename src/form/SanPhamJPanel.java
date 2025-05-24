@@ -820,7 +820,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     }
 
     void setForm(SanPham model) {
- 
+
         txtmaSP.setText(model.getMaSp());
         txtTenSP.setText(model.getTenSp());
         txtLoai.setText(model.getLoai());
@@ -830,14 +830,18 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         txtKichThuoc.setText(String.valueOf(model.getKichThuoc()));
         txtNgayNhap.setText(String.valueOf(model.getNgayNhap()));
         cboHang.setSelectedItem(String.valueOf(model.getHang()));
-        try {
-            CboHinhAnh.setSelectedItem(String.valueOf(model.getMaHinh()));
-        } catch (Exception e) {
+        String maHinh = model.getMaHinh();
+        if (maHinh == null || maHinh.trim().isEmpty()) {
+            CboHinhAnh.setSelectedItem("NO_IMAGE");
+        } else {
+            CboHinhAnh.setSelectedItem(maHinh);
         }
 
         txtMaNV.setText(Auth.user.getMaNV());
         txtNgayNhap.setText(DateHelper.toString(model.getNgayNhap(), "dd-MM-yyyy"));
-        Hinh h = hdao.selectByID((String) tblSanPham.getValueAt(index, 9));
+        if (index >= 0) {
+            Hinh h = hdao.selectByID((String) tblSanPham.getValueAt(index, 9));
+        }
         cboMaKhuyenMai.setSelectedItem(String.valueOf(model.getMaKM()));
     }
 
@@ -851,7 +855,13 @@ public class SanPhamJPanel extends javax.swing.JPanel {
         model.setMau(txtMau.getText());
         model.setKichThuoc(Integer.parseInt(txtKichThuoc.getText()));
         model.setHang(String.valueOf(cboHang.getSelectedItem().toString()));
-        model.setMaHinh(String.valueOf(CboHinhAnh.getSelectedItem().toString()));
+        String hinh = CboHinhAnh.getSelectedItem().toString();
+        if (hinh.trim().isEmpty()) {
+            model.setMaHinh(null);
+        } else {
+            model.setMaHinh(hinh);
+        }
+//        model.setMaHinh(String.valueOf(CboHinhAnh.getSelectedItem().toString()));
         model.setMaNV(Auth.user.getMaNV());
         Date now = new Date();
         model.setNgayNhap(XDate.addDays(now, 0));
@@ -1072,12 +1082,18 @@ public class SanPhamJPanel extends javax.swing.JPanel {
     HinhDAO haDao = new HinhDAO();
 
     public void fillComboboxHinh() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) CboHinhAnh.getModel();
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) CboHinhAnh.getModel();
         model.removeAllElements();
+
+        // Thêm giá trị mặc định đầu tiên
+        model.addElement("NO_IMAGE"); // Hoặc tên khác bạn chọn miễn khớp với DB
+
         try {
             List<String> list = haDao.selectAllHinh();
             for (String cd : list) {
-                model.addElement(cd);
+                if (!"NO_IMAGE".equals(cd)) {
+                    model.addElement(cd);
+                }
             }
         } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
