@@ -512,7 +512,11 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
 
         jLabel4.setText("Tên:");
 
+        txtTen_HD.setEditable(false);
+
         jLabel5.setText("Điểm:");
+
+        txtDiem_HD.setEditable(false);
 
         btnSuDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/reward.png"))); // NOI18N
         btnSuDung.setText("Sử Dụng");
@@ -593,6 +597,7 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
 
         jLabel6.setText("Tổng Tiền Hàng");
 
+        txtTongTienHang_HD.setEditable(false);
         txtTongTienHang_HD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTongTienHang_HDKeyReleased(evt);
@@ -601,12 +606,15 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
 
         jLabel7.setText("Giảm Giá:");
 
+        txtGiamGia.setEditable(false);
+
         jLabel8.setText("HT Thanh Toán:");
 
         cboHinhThuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chuyển Khoản", "Trực Tiếp" }));
 
         jLabel9.setText("Khách Cần Trả:");
 
+        txtKhachCanTra.setEditable(false);
         txtKhachCanTra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtKhachCanTraActionPerformed(evt);
@@ -630,6 +638,8 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
         });
 
         jLabel11.setText("Tiền Trả Lại:");
+
+        txtTienConLai.setEditable(false);
 
         jLabel22.setText("Trạng Thái:");
 
@@ -1811,6 +1821,7 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
     void addGioHang() {
         GioHang gh = new GioHang();
         try {
+            int check = 0;
             for (int row : tblSanPham.getSelectedRows()) {
                 SanPham sp = new SanPham();
                 gh.setMaSp((String) tblSanPham.getValueAt(row, 0));
@@ -1818,19 +1829,29 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
                 gh.setLoai((String) tblSanPham.getValueAt(row, 2));
                 gh.setDonGia((Double) tblSanPham.getValueAt(row, 3));
                 String number = JOptionPane.showInputDialog("Nhập Số Lượng Bạn Muốn Thêm Vào Giỏ Hàng!");
-                gh.setSoLuong(Integer.parseInt(number));
+                check = 0;
+                for(GioHang rowInGH : listGH){
+                     if(rowInGH.getMaSp() == tblSanPham.getValueAt(row, 0)){
+                         rowInGH.setSoLuong(rowInGH.getSoLuong() + Integer.parseInt(number));
+                         check++;
+                     }
+                }
+                if(check == 0 ){
+                    gh.setSoLuong(Integer.parseInt(number));
+                }
                 gh.setHang((String) tblSanPham.getValueAt(row, 5));
                 gh.setMaKM((String) tblSanPham.getValueAt(row, 6));
-//                gh.setHinh((String) tblSanPham.getValueAt(row, 6));
                 gh.setThanhTien(gh.getThanhTien());
-//                gh.setTrangThai((boolean) tblSanPham.getValueAt(row, 7));
                 if (tblSanPham.getValueAt(row, 7).toString().equalsIgnoreCase("Ngưng Hoạt Động")) {
                     gh.setMucGiamGia((int) 0);
                 } else {
                     gh.setMucGiamGia((int) tblSanPham.getValueAt(row, 8));
                 }
             }
-            listGH.add(gh);
+            if(check == 0 ){
+                listGH.add(gh);
+            }
+            
             loadGioHang();
             txtTongTien.setText(Double.toString(getSum()));
             MsgBox.alert(this, "Thêm vào giỏ hành thành công thành công");
@@ -1997,6 +2018,13 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
         } else {
             txtKhachTra.setBackground(Color.white);
             check = true;
+        }
+        try {
+            double checkKhanhTra = Double.parseDouble(String.valueOf(txtKhachTra.getText()));
+            
+        } catch (Exception e) {
+            MsgBox.alert(this, "Xin lỗi vì đã bị ngu");
+            txtKhachTra.setText("");
         }
         if (cboHinhThuc.getSelectedItem() == null) {
             MsgBox.alert(this, "Vui lòng chọn hình Thức Thanh Toán");
@@ -2344,11 +2372,12 @@ public class BanHangJPanel1 extends javax.swing.JPanel implements Runnable, Thre
     public void searchID() {
         String text = txtSearch.getText();
         if (findId(text)) {
-            JOptionPane.showMessageDialog(this, "Employee found", "notification", JOptionPane.INFORMATION_MESSAGE); // thông báo 
+            JOptionPane.showMessageDialog(this, "Tìm kiếm thành công", "notification", JOptionPane.INFORMATION_MESSAGE); // thông báo 
             tblSanPham.setRowSelectionInterval(index, index);
+            
             this.addGioHang();
         } else {
-            JOptionPane.showMessageDialog(this, "The employee you are looking for could not be found"); // nếu không tìm thấy nhân viên thì thông báo cho người dùng 
+            JOptionPane.showMessageDialog(this, "Không tìm thấy mã sản phẩm");
 
         }
     }
